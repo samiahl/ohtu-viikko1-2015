@@ -75,13 +75,20 @@ public class VarastoTest {
     @Test
     public void negLisaysEpaonnistuu(){
         varasto.lisaaVarastoon(-1);
-        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(1, varasto.getSaldo(), vertailuTarkkuus);
     }
     
     @Test
     public void negNostoEpaonnistuu(){
         varasto.lisaaVarastoon(1);
         varasto.otaVarastosta(-1);
+        assertEquals(1, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test 
+    public void liianSuuriNostoEpaonnistuu(){
+        varasto.lisaaVarastoon(1);
+        varasto.otaVarastosta(2);
         assertEquals(1, varasto.getSaldo(), vertailuTarkkuus);
     }
     
